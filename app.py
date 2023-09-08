@@ -7,6 +7,8 @@ from flask_cors import CORS
 # request and jsonify are used for processing and formatting HTTP requests and responses.
 from flask import Flask, request, jsonify
 
+import os
+
 # Initialize the Flask application
 app = Flask(__name__)
 # Enable Cross-Origin Resource Sharing for this Flask app.
@@ -17,7 +19,7 @@ from GPTconvo import GPT3Chatbot
 
 # This is the API key for accessing the GPT-3 API.
 # Caution: Hardcoding API keys in the source code is not a best practice for production applications.
-api_key = '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'
+api_key = os.environ.get('OPENAIAPI')
 
 # Create an instance of the GPT3Chatbot with the provided API key.
 bot = GPT3Chatbot(api_key)
